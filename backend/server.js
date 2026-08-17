@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import pool from "./config/db.js";
+import queryRoutes from "./routes/queryRoutes.js";
 
 const app = express();
 
@@ -31,6 +32,8 @@ app.get("/api/test-db", async (req, res) => {
         });
     }
 });
+
+app.use("/api/query", queryRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
